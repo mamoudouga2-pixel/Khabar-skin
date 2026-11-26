@@ -1,0 +1,6 @@
+{
+  "name": "KhabarCal",
+  "description": "AI-powered Bangladeshi and international food calorie scanner, macro breakdown, and daily nutrition tracker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

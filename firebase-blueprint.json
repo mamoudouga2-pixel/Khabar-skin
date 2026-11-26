@@ -1,0 +1,255 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User nutrition goals, body metrics, and language preference.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name."
+        },
+        "dailyCalorieGoal": {
+          "type": "integer",
+          "description": "Daily target calories in kcal."
+        },
+        "proteinGoalG": {
+          "type": "integer",
+          "description": "Daily protein target in grams."
+        },
+        "carbsGoalG": {
+          "type": "integer",
+          "description": "Daily carbohydrate target in grams."
+        },
+        "fatGoalG": {
+          "type": "integer",
+          "description": "Daily fat target in grams."
+        },
+        "waterGoalMl": {
+          "type": "integer",
+          "description": "Daily water goal in milliliters."
+        },
+        "weightKg": {
+          "type": "number",
+          "description": "Current body weight in kg."
+        },
+        "targetWeightKg": {
+          "type": "number",
+          "description": "Target body weight in kg."
+        },
+        "heightCm": {
+          "type": "integer",
+          "description": "Height in centimeters."
+        },
+        "age": {
+          "type": "integer",
+          "description": "User age in years."
+        },
+        "goalMode": {
+          "type": "string",
+          "enum": ["LOSE", "MAINTAIN", "GAIN"],
+          "description": "Weight management objective."
+        },
+        "preferredLang": {
+          "type": "string",
+          "enum": ["bn", "en"],
+          "description": "Preferred UI language code."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "dailyCalorieGoal",
+        "proteinGoalG",
+        "carbsGoalG",
+        "fatGoalG",
+        "waterGoalMl",
+        "weightKg",
+        "targetWeightKg",
+        "heightCm",
+        "age",
+        "goalMode",
+        "preferredLang",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MealLog": {
+      "title": "MealLog",
+      "description": "Individual logged Bangladeshi or international meal with macro breakdown.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "dateKey": {
+          "type": "string",
+          "description": "Local date key in YYYY-MM-DD format."
+        },
+        "mealType": {
+          "type": "string",
+          "enum": ["BREAKFAST", "LUNCH", "DINNER", "SNACK"],
+          "description": "Meal slot category."
+        },
+        "dishNameBn": {
+          "type": "string",
+          "description": "Bengali dish name."
+        },
+        "dishNameEn": {
+          "type": "string",
+          "description": "English dish name."
+        },
+        "cuisineType": {
+          "type": "string",
+          "description": "Cuisine classification."
+        },
+        "calories": {
+          "type": "integer",
+          "description": "Total calories for logged portion."
+        },
+        "proteinG": {
+          "type": "number",
+          "description": "Protein grams."
+        },
+        "carbsG": {
+          "type": "number",
+          "description": "Carbohydrates grams."
+        },
+        "fatG": {
+          "type": "number",
+          "description": "Fat grams."
+        },
+        "fiberG": {
+          "type": "number",
+          "description": "Dietary fiber grams."
+        },
+        "portionMultiplier": {
+          "type": "number",
+          "description": "Portion multiplier applied."
+        },
+        "healthScore": {
+          "type": "integer",
+          "description": "Nutrition balance score 1..10."
+        },
+        "source": {
+          "type": "string",
+          "enum": ["PHOTO_AI", "TEXT_AI", "QUICK_DB", "MANUAL"],
+          "description": "How the meal was logged."
+        },
+        "itemsSummary": {
+          "type": "string",
+          "description": "Plate item breakdown summary."
+        },
+        "aiTipBn": {
+          "type": "string",
+          "description": "Bengali nutrition tip."
+        },
+        "aiTipEn": {
+          "type": "string",
+          "description": "English nutrition tip."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "dateKey",
+        "mealType",
+        "dishNameBn",
+        "dishNameEn",
+        "cuisineType",
+        "calories",
+        "proteinG",
+        "carbsG",
+        "fatG",
+        "fiberG",
+        "portionMultiplier",
+        "healthScore",
+        "source",
+        "itemsSummary",
+        "aiTipBn",
+        "aiTipEn",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DailyLog": {
+      "title": "DailyLog",
+      "description": "Daily hydration intake and AI coach insight keyed by YYYY-MM-DD.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "dateKey": {
+          "type": "string",
+          "description": "Date key in YYYY-MM-DD format matching document ID."
+        },
+        "waterMl": {
+          "type": "integer",
+          "description": "Water consumed in milliliters."
+        },
+        "coachTip": {
+          "type": "string",
+          "description": "Latest AI nutrition coach advice for the day."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp on update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "dateKey",
+        "waterMl",
+        "coachTip",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-scoped user nutrition goals and profile."
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": { "$ref": "#/entities/MealLog" },
+      "description": "Owner-scoped meal entries for calorie and macro tracking."
+    },
+    "/users/{userId}/daily_logs/{dateKey}": {
+      "schema": { "$ref": "#/entities/DailyLog" },
+      "description": "Owner-scoped daily water and AI coach notes keyed by date."
+    }
+  }
+}
